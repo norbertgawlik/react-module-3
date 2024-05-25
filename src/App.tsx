@@ -1,9 +1,10 @@
 import './App.css'
+import { SortDataPage } from './pages/SortDataPage';
 function App() {
 
   return (
     <>
-      tttt
+      <SortDataPage/>
     </>
   )
 }
