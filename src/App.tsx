@@ -1,10 +1,10 @@
 import './App.css'
-import { SortDataPage } from './pages/SortDataPage';
+import { ThemeSwitcherPage } from './pages/ThemeSwitcherPage'
 function App() {
 
   return (
     <>
-      <SortDataPage/>
+      <ThemeSwitcherPage/>
     </>
   )
 }
