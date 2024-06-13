@@ -1,26 +1,26 @@
-import { users } from "../data/users";
-import { userReducer, ActionType } from "../components/Users/userReducer";
+import { UserReducer } from "../components/Users/UserReducer";
 import { MouseEventHandler, useReducer, useState} from "react";
-import { User } from "../types/User";
 import { Button } from "../ui";
 import { UserForm } from "../components/Users/UserForm";
+import { users } from "../data/users";
+import { type User } from "../types/User";
+import { Action } from "../types/Action";
 
 const initialValue : User[] = users;
 
 export const UsersPage = () => {
-    const [state,dispatch] = useReducer(userReducer,initialValue);
+    const [state,dispatch] = useReducer(UserReducer,initialValue);
     const [editingUserId,setEditingUserId] = useState<number | null>(null)
 
     const handleRemoveUser = (user : User) : MouseEventHandler<HTMLButtonElement> => {
-        return () => dispatch({type: ActionType.REMOVE, payload: user});
+        return () => dispatch({type: Action.REMOVE, payload: user});
     };
     const handleAddUser = (user: User) => {
-        dispatch({ type: ActionType.ADD, payload: user });
-        console.log(state);
+        dispatch({ type: Action.ADD, payload: user });
     };
     
     const handleEditUser = (user: User) => {
-        dispatch({type: ActionType.EDIT, payload: user});
+        dispatch({type: Action.EDIT, payload: user});
         setEditingUserId(null);
     };
     
