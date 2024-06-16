@@ -4,16 +4,16 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { User } from "../../types/User";
 
+type UserFormProps = {
+    initData?: Partial<User>;
+    onSubmit : (data : User) => void;
+};
+
 const userFormSchema = z.object({
     id: z.number().optional(),
     nickname : z.string().min(1, "Nickname is required"),
     age : z.number().min(1,"Age is required"),
 });
-
-type UserFormProps = {
-    initData?: Partial<User>;
-    onSubmit : (data : User) => void;
-};
 
 export const UserForm = ({initData,onSubmit} : UserFormProps) => {
     const { register, handleSubmit, formState: {errors}} = useForm<User>({
